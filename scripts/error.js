@@ -1,4 +1,6 @@
 module.exports = (EmbedBuilder, inter, err) => {
+	console.error('Client »', err);
+
 	const embed = new EmbedBuilder()
 		.setColor('#FF0048')
 		.setAuthor({
@@ -7,15 +9,12 @@ module.exports = (EmbedBuilder, inter, err) => {
 		})
 		.setDescription('We sincerely apologize for the inconvenience. If this error persists, please contact the server administrator.');
 
-	console.error('Client »', err);
-
-	const replyOptions = { embeds: [embed] };
-
+	const handleReply = method => inter[method]({ embeds: [embed] }).catch(console.error);
 	if (inter.replied) {
-		inter.followUp(replyOptions).catch(console.error);
+		handleReply('followUp');
 	} else if (inter.deferred) {
-		inter.editReply(replyOptions).catch(console.error);
+		handleReply('editReply');
 	} else {
-		inter.reply(replyOptions).catch(console.error);
+		handleReply('reply');
 	}
 };
