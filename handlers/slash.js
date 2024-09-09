@@ -1,7 +1,8 @@
 const { join } = require('node:path');
+const { readdir } = require('node:fs/promises');
 const COMMANDS_PATH = join(__dirname, '..', 'commands');
 
-module.exports = async (client, readdir) => {
+module.exports = async client => {
 	try {
 		const commandCategories = await readdir(COMMANDS_PATH);
 

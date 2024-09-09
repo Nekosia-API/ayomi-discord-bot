@@ -1,11 +1,13 @@
-const path = require('node:path');
+const { join } = require('node:path');
+const { readdir } = require('node:fs/promises');
 
-module.exports = async (client, readdir) => {
+module.exports = async (client) => {
 	try {
-		const files = (await readdir('./events')).filter(f => f.endsWith('.js'));
+		const eventFiles = (await readdir(join(__dirname, '..', 'events'))).filter(file => file.endsWith('.js'));
 
-		for (const file of files) {
-			const event = require(path.join(__dirname, '../events', file));
+		for (const file of eventFiles) {
+			const event = require(join(__dirname, '..', 'events', file));
+
 			if (event.env === 'development') continue;
 
 			const handler = event.once ? 'once' : 'on';
