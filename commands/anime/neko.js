@@ -1,5 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
-const axios = require('axios');
+const axios = require('../../services/axios.js');
 const sendError = require('../../scripts/error.js');
 
 module.exports = {
