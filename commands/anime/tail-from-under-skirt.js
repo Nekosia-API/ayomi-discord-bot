@@ -3,8 +3,8 @@ const fetchImage = require('../../scripts/fetchImage.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('kitsune')
-		.setDescription('Fetch a random foxgirl (kitsune) image.')
+		.setName('tail-from-under-skirt')
+		.setDescription('Fetch a random image featuring a character with a tail peeking out from under a skirt.')
 		.addIntegerOption(option =>
 			option.setName('count')
 				.setDescription('How many adorable images would you like? (1 to 5)')
@@ -14,5 +14,5 @@ module.exports = {
 			option.setName('compressed')
 				.setDescription('Would you like to see the images in a lighter, faster-loading version? (default: false)')),
 
-	execute: (_, inter) => fetchImage(inter, 'foxgirl')
+	execute: (_, inter) => fetchImage(inter, 'tail-from-under-skirt')
 };
