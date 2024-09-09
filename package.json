@@ -1,0 +1,32 @@
+{
+  "name": "ayomi",
+  "version": "1.0.0",
+  "description": "Anime bot for Discord servers.",
+  "keywords": [
+    "discord",
+    "bot",
+    "ayomi",
+    "anime",
+    "the",
+    "best"
+  ],
+  "homepage": "https://github.com/Nekosia-API/ayomi-discord-bot#readme",
+  "bugs": {
+    "url": "https://github.com/Nekosia-API/ayomi-discord-bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nekosia-API/ayomi-discord-bot.git"
+  },
+  "license": "ISC",
+  "author": "Sefinek <contact@nekosia.cat> (https://sefinek.net)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "up": "ncu -u && npm install && npm update && npm audit fix"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "globals": "^15.9.0"
+  }
+}
