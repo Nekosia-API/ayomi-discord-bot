@@ -1,26 +1,25 @@
-module.exports = async (client, readdir, join) => {
-	console.log('SlashH » Loading slash commands...');
-	const commandsPath = join(__dirname, '..', 'commands');
+const { join } = require('node:path');
+const COMMANDS_PATH = join(__dirname, '..', 'commands');
 
+module.exports = async (client, readdir) => {
 	try {
-		const commandCategories = await readdir(commandsPath);
+		const commandCategories = await readdir(COMMANDS_PATH);
 
 		for (const category of commandCategories) {
-			const categoryPath = join(commandsPath, category);
+			const categoryPath = join(COMMANDS_PATH, category);
 			const commandFiles = (await readdir(categoryPath)).filter(file => file.endsWith('.js'));
 
 			for (const file of commandFiles) {
-				const filePath = join(categoryPath, file);
-				const command = require(filePath);
+				const command = require(join(categoryPath, file));
 
-				if ('data' in command && 'execute' in command) {
+				if (command?.data?.name && typeof command.execute === 'function') {
 					client.interactions.set(command.data.name, command);
 				} else {
-					console.error(`SlashH » The command at ${filePath} is missing a required "data" or "execute" property.`);
+					console.error(`SlashH » Invalid command in ${join(categoryPath, file)}: missing "data" or "execute".`);
 				}
 			}
 		}
 	} catch (err) {
-		console.error('SlashH » An error occurred while reading command files:', err);
+		console.error('SlashH » Error reading command files:', err);
 	}
 };
