@@ -25,7 +25,7 @@ module.exports = async (inter, category) => {
 			? `https://nekosia.cat/booru/tags/${images[0].category}/${images[0].id}`
 			: null;
 
-		await inter.reply({ content, embeds });
+		inter.reply({ content, embeds });
 	} catch (err) {
 		sendError(EmbedBuilder, inter, err);
 	}
