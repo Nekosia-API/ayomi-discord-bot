@@ -1,9 +1,8 @@
 require('dotenv').config();
-
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord.js');
-const { readdirSync } = require('node:fs');
-const { join } = require('node:path');
+const { readdirSync, existsSync, writeFileSync } = require('fs');
+const { join, dirname } = require('node:path');
 
 const commands = readdirSync(join(__dirname, 'commands'))
 	.flatMap(folder => readdirSync(join(__dirname, 'commands', folder))
@@ -22,6 +21,20 @@ const commands = readdirSync(join(__dirname, 'commands'))
 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
+const saveCommandsToFile = data => {
+	const interactionsPath = join(__dirname, '..', 'nekosia.cat', 'database', 'interactions.json');
+	const interactionsDir = dirname(interactionsPath);
+	if (!existsSync(interactionsDir)) return console.error(`Directory ${interactionsDir} does not exist.`);
+
+	const interactionsData = data.map(command => ({
+		name: command.name,
+		description: command.description || 'Description not provided.',
+		options: command.options || []
+	}));
+	writeFileSync(interactionsPath, JSON.stringify(interactionsData, null, 2), 'utf8');
+	console.log(`Commands saved to ${interactionsPath}`);
+};
+
 (async () => {
 	try {
 		console.log('Started refreshing application slash commands...');
@@ -31,6 +44,7 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 			{ body: commands }
 		);
 
+		saveCommandsToFile(commands);
 		console.log(`Successfully reloaded ${data.length} slash commands!`);
 	} catch (err) {
 		console.error('An error occurred while reloading slash commands:', err);

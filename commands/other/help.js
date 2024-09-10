@@ -8,14 +8,7 @@ module.exports = {
 		const embed1 = new EmbedBuilder()
 			.setAuthor({ name: `List of available commands for the ${client.user.username} bot`, iconURL: client.user.displayAvatarURL() })
 			.setColor('#00FFAA')
-			.addFields(client.interactions
-				.filter(({ data }) => data.name !== 'help')
-				.map(({ data }) => ({
-					name: `/${data.name}`,
-					value: data.description || 'Description not provided.',
-					inline: true
-				}))
-			);
+			.setDescription('Please see https://nekosia.cat/ayomi/commands.');
 
 		const embed2 = new EmbedBuilder()
 			.setColor('#111f25')
@@ -27,7 +20,7 @@ module.exports = {
 				{ name: '🔢  Are You a Developer?', value: 'If so, check out the [Nekosia API documentation](https://nekosia.cat/documentation?page=introduction). This API provides a variety of random anime images. Add some anime magic to your projects today!' },
 				{ name: '😻  Cutest Anime Booru', value: 'Visit our [Anime Booru](https://nekosia.cat/booru) for adorable images! Join our community to rate, comment, and browse through images. You can also submit requests to update image information. Once reviewed, your changes will be reflected in API responses. We greatly appreciate your contributions, as our API relies on accurate image tagging.' }
 			])
-			.setFooter({ text: 'Copyright © 2024 by Nekosia. All Rights Reserved.', iconURL: client.user.displayAvatarURL() });
+			.setFooter({ text: 'Copyright © 2024 by Nekosia API. All Rights Reserved.', iconURL: client.user.displayAvatarURL() });
 
 		await inter.reply({ embeds: [embed1, embed2] });
 	}
