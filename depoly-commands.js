@@ -26,10 +26,7 @@ const commands = readdirSync(commandsDir)
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
 const saveCommandsToFile = data => {
-	const jsonPath = process.env.NODE_ENV === 'production' ?
-		join(__dirname, '..', '..', 'www', 'nekosia.cat', 'database', 'interactions.json') :
-		join(__dirname, '..', 'nekosia.cat', 'database', 'interactions.json');
-
+	const jsonPath = join(__dirname, 'interactions.json');
 	const interactionsDir = dirname(jsonPath);
 	if (!existsSync(interactionsDir)) return console.error(`Directory ${interactionsDir} does not exist.`);
 
