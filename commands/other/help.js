@@ -4,7 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
 		.setDescription('Shows all available bot commands with details.'),
-	execute: async (client, inter) => {
+	execute: (client, inter) => {
 		const embed1 = new EmbedBuilder()
 			.setAuthor({ name: `List of available commands for ${client.user.username} bot`, iconURL: client.user.displayAvatarURL() })
 			.setColor('#00FFAA')
@@ -22,6 +22,6 @@ module.exports = {
 			])
 			.setFooter({ text: 'Copyright © 2024 by Nekosia API. All Rights Reserved.', iconURL: client.user.displayAvatarURL() });
 
-		await inter.reply({ embeds: [embed1, embed2] });
+		inter.reply({ embeds: [embed1, embed2] });
 	}
 };
