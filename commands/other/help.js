@@ -3,7 +3,7 @@ const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('Shows all available bot commands with details.'),
+		.setDescription('All the useful information about the bot, including the command list.'),
 	execute: (client, inter) => {
 		const embed1 = new EmbedBuilder()
 			.setAuthor({ name: `List of available commands for ${client.user.username} bot`, iconURL: client.user.displayAvatarURL() })

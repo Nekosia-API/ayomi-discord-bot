@@ -4,20 +4,24 @@ const { Routes } = require('discord.js');
 const { readdirSync, existsSync, writeFileSync } = require('fs');
 const { join, dirname } = require('node:path');
 
-const commands = readdirSync(join(__dirname, 'commands'))
-	.flatMap(folder => readdirSync(join(__dirname, 'commands', folder))
-		.filter(file => file.endsWith('.js'))
-		.map(file => {
-			const command = require(join(__dirname, 'commands', folder, file));
-			if (command?.data?.toJSON && command.execute) {
-				return command.data.toJSON();
-			} else {
+const commandsDir = join(__dirname, 'commands');
+const commands = readdirSync(commandsDir)
+	.flatMap(folder => {
+		const folderPath = join(commandsDir, folder);
+		return readdirSync(folderPath)
+			.filter(file => file.endsWith('.js'))
+			.map(file => {
+				const command = require(join(folderPath, file));
+				if (command?.data?.toJSON && command.execute) {
+					const commandData = command.data.toJSON();
+					commandData.nsfw = folder.toLowerCase() === 'nsfw';
+					return commandData;
+				}
 				console.warn(`SlashC » Invalid command: ${file}`);
 				return null;
-			}
-		})
-	)
-	.filter(Boolean);
+			})
+			.filter(Boolean);
+	});
 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
@@ -26,12 +30,7 @@ const saveCommandsToFile = data => {
 	const interactionsDir = dirname(interactionsPath);
 	if (!existsSync(interactionsDir)) return console.error(`Directory ${interactionsDir} does not exist.`);
 
-	const interactionsData = data.map(command => ({
-		name: command.name,
-		description: command.description || 'Description not provided.',
-		options: command.options || []
-	}));
-	writeFileSync(interactionsPath, JSON.stringify(interactionsData, null, 2), 'utf8');
+	writeFileSync(interactionsPath, JSON.stringify(data, null, 2), 'utf8');
 	console.log(`Commands saved to ${interactionsPath}`);
 };
 
