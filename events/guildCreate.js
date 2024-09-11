@@ -8,7 +8,7 @@ module.exports = {
 		const owner = await client.users.fetch(server.ownerId);
 		owner.send({ embeds: [new EmbedBuilder()
 			.setColor('#6EADD1')
-			.setAuthor({ name: 'Thank you! 💗', iconURL: server.iconURL() })
+			.setAuthor({ name: 'Thank you for adding 💗', iconURL: server.iconURL() })
 			.addFields([
 				{ name: '» Official website', value: '> https://nekosia.cat' },
 				{ name: '» More info', value: '> [nekosia.cat/ayomi](https://nekosia.cat/ayomi)', inline: true },
