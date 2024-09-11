@@ -12,7 +12,8 @@ module.exports = {
 			.addFields([
 				{ name: '» Official website', value: '> https://nekosia.cat' },
 				{ name: '» More info', value: '> [nekosia.cat/ayomi](https://nekosia.cat/ayomi)', inline: true },
-				{ name: '» Commands', value: '> [nekosia.cat/ayomi/commands](https://nekosia.cat/ayomi/commands)', inline: true }
+				{ name: '» Commands', value: '> [nekosia.cat/ayomi/commands](https://nekosia.cat/ayomi/commands)', inline: true },
+				{ name: '» Our Discord Server', value: '> https://discord.gg/Ws3H6wJ4qw' }
 			])
 			.setThumbnail(client.user.displayAvatarURL())]
 		}).catch(err => console.log('NoelCL » Message for adding the bot was not delivered.', err.message));
