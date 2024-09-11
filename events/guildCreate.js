@@ -5,7 +5,7 @@ module.exports = {
 	async execute(server, client) {
 		if (!server.available) return;
 
-		const owner = await client.users.fetch(server.ownerId);
+		const owner = client.users.fetch(server.ownerId);
 		owner.send({ embeds: [new EmbedBuilder()
 			.setColor('#6EADD1')
 			.setAuthor({ name: 'Thank you! 💗', iconURL: server.iconURL() })
