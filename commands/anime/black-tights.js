@@ -14,5 +14,5 @@ module.exports = {
 			option.setName('compressed')
 				.setDescription('Would you like to see the images in a lighter, faster-loading version? (default: false)')),
 
-	execute: (_, inter) => fetchImage(inter, 'black-thigs')
+	execute: (_, inter) => fetchImage(inter, 'black-tights')
 };
