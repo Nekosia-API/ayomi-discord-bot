@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord.js');
-const { readdirSync, existsSync, writeFileSync } = require('fs');
+const { readdirSync, existsSync, writeFileSync } = require('node:fs');
 const { join, dirname } = require('node:path');
 
 const commandsDir = join(__dirname, 'commands');
