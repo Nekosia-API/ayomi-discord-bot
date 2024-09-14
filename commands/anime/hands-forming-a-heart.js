@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const fetchImage = require('../../scripts/fetchImage.js');
 
 module.exports = {
@@ -12,7 +12,8 @@ module.exports = {
 				.setMaxValue(5))
 		.addBooleanOption(option =>
 			option.setName('compressed')
-				.setDescription('Would you like to see the images in a lighter, faster-loading version? (default: false)')),
+				.setDescription('Would you like to see the images in a lighter, faster-loading version? (default: false)'))
+		.setDefaultMemberPermissions(PermissionFlagsBits.AttachFiles),
 
 	execute: (_, inter) => fetchImage(inter, 'hands-forming-a-heart')
 };

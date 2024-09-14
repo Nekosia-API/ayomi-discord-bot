@@ -1,9 +1,10 @@
-const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('All the useful information about the bot, including the command list.'),
+		.setDescription('All the useful information about the bot, including the command list.')
+		.setDefaultMemberPermissions(PermissionFlagsBits.SendMessages),
 	execute: (client, inter) => {
 		const embed1 = new EmbedBuilder()
 			.setAuthor({ name: `List of available commands for ${client.user.username} bot`, iconURL: client.user.displayAvatarURL() })
