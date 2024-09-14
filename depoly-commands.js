@@ -3,6 +3,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord.js');
 const { readdirSync, existsSync, writeFileSync } = require('node:fs');
 const { join, dirname } = require('node:path');
+const { version } = require('./package.json');
 
 const commandsDir = join(__dirname, 'commands');
 const commands = readdirSync(commandsDir)
@@ -30,7 +31,13 @@ const saveCommandsToFile = data => {
 	const interactionsDir = dirname(jsonPath);
 	if (!existsSync(interactionsDir)) return console.error(`Directory ${interactionsDir} does not exist.`);
 
-	writeFileSync(jsonPath, JSON.stringify(data, null, 2), 'utf8');
+	const jsonData = {
+		date: new Date().toISOString(),
+		version,
+		commands: data
+	};
+
+	writeFileSync(jsonPath, JSON.stringify(jsonData, null, 2), 'utf8');
 	console.log(`Commands saved to ${jsonPath}`);
 };
 
