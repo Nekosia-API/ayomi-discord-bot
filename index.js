@@ -2,7 +2,7 @@ require('dotenv').config();
 const { Client, Events, Collection } = require('discord.js');
 
 // Initialize client with intents and collections
-const client = new Client({ intents: [1, 2, 4, 256, 512, 32768] });
+const client = new Client({ intents: [1] });
 client.interactions = new Collection();
 client.cooldowns = new Collection();
 
