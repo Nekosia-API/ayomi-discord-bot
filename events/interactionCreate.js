@@ -4,7 +4,7 @@ const sendError = require('../scripts/error.js');
 module.exports = {
 	name: 'interactionCreate',
 	async execute(inter, client) {
-		if (!inter.isChatInputCommand()) return;
+		if (!inter.isChatInputCommand() || !inter.guild) return;
 
 		const command = client.interactions.get(inter.commandName);
 		if (!command) return;
