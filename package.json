@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/Nekosia-API/ayomi-discord-bot.git"
   },
-  "license": "ISC",
+  "license": "CC BY-NC-SA",
   "author": "Sefinek <contact@nekosia.cat> (https://sefinek.net)",
   "main": "index.js",
   "scripts": {
