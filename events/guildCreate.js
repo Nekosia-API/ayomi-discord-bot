@@ -21,7 +21,7 @@ module.exports = {
 
 		console.log(`NoelCL » Bot added to: '${server.name}' (${server.id}); Members: ${server.members.cache.size}; Owner: '${owner.tag}' (${owner.id})`);
 
-		client.channels.cache.get(process.env.GUILD_CREATE_LOG).send(
+		client.channels.cache.get(process.env.BOT_LOGS).send(
 			`\\✅ » Added to: **${server.name}** \`${server.id}\`; Users: **${server.members.cache.filter(m => !m.user.bot).size}**>**${server.members.cache.size}**; Owner: **${owner.tag}** \`${owner.id}\`; Servers: **${client.guilds.cache.size}**;`
 		).catch(err => console.warn('GAdded » Message (guildCreate) did not reach the info server.', err.message));
 	}
