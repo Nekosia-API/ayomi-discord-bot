@@ -16,5 +16,5 @@ module.exports = {
 		.setNSFW(true)
 		.setDefaultMemberPermissions(PermissionFlagsBits.AttachFiles),
 
-	execute: (_, inter) => fetchImage(inter, 'swimsuit')
+	execute: (_, inter) => fetchImage(inter, 'swimsuit'),
 };

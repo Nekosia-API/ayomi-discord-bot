@@ -15,5 +15,5 @@ module.exports = {
 				.setDescription('Would you like to see the images in a lighter, faster-loading version? (default: false)'))
 		.setDefaultMemberPermissions(PermissionFlagsBits.AttachFiles),
 
-	execute: (_, inter) => fetchImage(inter, 'tail-from-under-skirt')
+	execute: (_, inter) => fetchImage(inter, 'tail-from-under-skirt'),
 };

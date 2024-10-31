@@ -13,5 +13,5 @@ module.exports = {
 		} catch (err) {
 			console.warn('Failed to send ready signal to PM2.', err.message);
 		}
-	}
+	},
 };

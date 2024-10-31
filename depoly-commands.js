@@ -34,7 +34,7 @@ const saveCommandsToFile = data => {
 	const jsonData = {
 		date: new Date().toISOString(),
 		version,
-		commands: data
+		commands: data,
 	};
 
 	writeFileSync(jsonPath, JSON.stringify(jsonData, null, 2), 'utf8');

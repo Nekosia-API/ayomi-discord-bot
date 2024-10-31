@@ -18,7 +18,7 @@ module.exports = async (inter, category) => {
 		if (timeElapsed < cooldownTime) {
 			return inter.reply({
 				content: `⏰  Please wait another ${(cooldownTime - timeElapsed) / 1000}s before using this command again.`,
-				ephemeral: true
+				ephemeral: true,
 			});
 		}
 	}
@@ -27,7 +27,7 @@ module.exports = async (inter, category) => {
 
 	try {
 		const { data } = await axios.get(`https://api.nekosia.cat/api/v1/images/${category}`, {
-			params: { session: 'id', id: userId, count }
+			params: { session: 'id', id: userId, count },
 		});
 
 		const compressed = inter.options.getBoolean('compressed') || false;

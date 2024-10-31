@@ -16,5 +16,5 @@ module.exports = {
 		}
 
 		console.log(`SlashC » Interaction '${inter.commandName}' was triggered by ${inter.user.tag} (${inter.id}) on the server ${inter.guild.name} (${inter.guild.id})`);
-	}
+	},
 };

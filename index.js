@@ -18,7 +18,7 @@ const shardEvents = {
 		require('./scripts/setActivity.js')(client.user);
 		console.log(`Shard${id} » Resumed. Replayed events:`, replayedEvents);
 	},
-	[Events.ShardReady]: shard => console.log(`Shard${shard} » Ready and running`)
+	[Events.ShardReady]: shard => console.log(`Shard${shard} » Ready and running`),
 };
 
 Object.entries(shardEvents).forEach(([event, handler]) => client.on(event, handler));
