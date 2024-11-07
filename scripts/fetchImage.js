@@ -48,6 +48,6 @@ module.exports = async (inter, category) => {
 
 		inter.reply({ content, embeds });
 	} catch (err) {
-		sendError(EmbedBuilder, inter, err);
+		sendError(EmbedBuilder, inter, err.stack);
 	}
 };
