@@ -3,7 +3,7 @@ const axios = require('../services/axios.js');
 const sendError = require('./error.js');
 
 const cooldowns = new Map();
-const BASE_COOLDOWN = 2000;
+const BASE_COOLDOWN = 1800;
 const MAX_COOLDOWN = 60000;
 
 module.exports = async (inter, category) => {
