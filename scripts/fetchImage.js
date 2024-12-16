@@ -26,7 +26,7 @@ module.exports = async (inter, category) => {
 	cooldowns.set(userId, Date.now());
 
 	try {
-		const { data } = await axios.get(`https://api.nekosia.cat/api/v1/images/${category}`, {
+		const { data } = await axios.get(`${process.env.API}/api/v1/images/${category}`, {
 			params: { session: 'id', id: userId, count },
 		});
 
